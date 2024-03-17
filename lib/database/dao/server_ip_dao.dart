@@ -17,7 +17,7 @@ class UrlSource implements UrlSourceI {
       final prefs = await SharedPreferences.getInstance();
       final customerUrl = prefs.getString(customerUrlKey);
 
-      final String url = 'https://$customerUrl/';
+      final String url = '$customerUrl/';
       baseUrl = url;
       return url;
     }
@@ -25,7 +25,7 @@ class UrlSource implements UrlSourceI {
 
   @override
   Future<void> saveBaseUrl(String domain) async {
-    baseUrl = 'https://$domain/';
+    baseUrl = '$domain/';
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(customerUrlKey, domain);
   }
