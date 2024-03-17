@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 
 class ShortestWayModel extends Equatable {
   const ShortestWayModel({
-    required this.error,
-    required this.message,
-    required this.data,
+     this.error = false,
+     this.message = '',
+     this.data = const [],
   });
 
   factory ShortestWayModel.fromJson(Map<String, dynamic> json) {
