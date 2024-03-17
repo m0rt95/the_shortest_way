@@ -4,7 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import 'app_bloc.dart';
 import 'core/di/service_locator.dart';
-import 'modul/calculation_results/process_screen.dart';
+import 'modul/process_screen/process_screen.dart';
 
 void main() {
   configureDependencies();
@@ -140,16 +140,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   state.isActiveButton ? colorMain : const Color(0xFFBDBDBD),
               onPressed: state.isActiveButton
                   ? () {
-                _bloc.add(const StartCountingProcessEvent());
-                      if(state.isProgress == false){
-                        Navigator.push<dynamic>(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                                builder: (context) =>  ProcessScreen(
-                                  isProgress: true,
-                                  shortestWayModel: state.shortestWayModel,
-                                )));
-                      }
+                      _bloc.add(const StartCountingProcessEvent());
+                      //if(state.isProgress == false){}
+                      Navigator.push<dynamic>(
+                          context,
+                          MaterialPageRoute<dynamic>(
+                              builder: (context) => ProcessScreen(
+                                    isProgress: true,
+                                    shortestWayModel: state.shortestWayModel,
+                                  )));
                     }
                   : null,
               label: Container(
@@ -160,8 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation
-                .centerFloat, // This trailing comma makes auto-formatting nicer for build methods.
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
           ),
         );
       },

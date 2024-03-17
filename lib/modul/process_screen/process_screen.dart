@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../model/shortest_way_model.dart';
+import '../preview/preview_screen.dart';
 
 class ProcessScreen extends StatefulWidget {
   const ProcessScreen({
@@ -121,7 +122,15 @@ class _ProcessScreenState extends State<ProcessScreen>
             opacity: _fabOpacityAnimation.value,
             child: FloatingActionButton.extended(
               backgroundColor: const Color(0xFFD0BCFF),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                        builder: (context) => PreviewScreen(
+                              shortestWayModel:
+                                  widget.shortestWayModel ?? const ShortestWayModel(),
+                            )));
+              },
               label: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: const Text(
