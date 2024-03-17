@@ -44,7 +44,7 @@ class HttpClient implements HttpClientBase {
     late String url;
 
     //final String baseUrl = httpRequest.baseUrl ?? await serverIpDao.getApiUrl();
-    url = 'https://$httpRequest.method/';
+    url = '${httpRequest.method}/';
     dynamic response;
     try {
       if (httpRequest.type == HttpRequestType.post) {
