@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 
 import 'app_bloc.dart';
 import 'core/di/service_locator.dart';
+import 'modul/calculation_results/process_screen.dart';
 
 void main() {
   configureDependencies();
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bloc: _bloc,
       builder: (context, state) {
         return GestureDetector(
-          onTap: (){
+          onTap: () {
             FocusScope.of(context).unfocus();
           },
           child: Scaffold(
@@ -135,8 +136,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             floatingActionButton: FloatingActionButton.extended(
-              backgroundColor: state.isActiveButton ? colorMain : const Color(0xFFBDBDBD),
-              onPressed: state.isActiveButton ? () {} : null,
+              backgroundColor:
+                  state.isActiveButton ? colorMain : const Color(0xFFBDBDBD),
+              onPressed: state.isActiveButton
+                  ? () {
+                _bloc.add(const StartCountingProcessEvent());
+                      if(state.isProgress == false){
+                        Navigator.push<dynamic>(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                                builder: (context) =>  ProcessScreen(
+                                  isProgress: true,
+                                  shortestWayModel: state.shortestWayModel,
+                                )));
+                      }
+                    }
+                  : null,
               label: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: const Text(
